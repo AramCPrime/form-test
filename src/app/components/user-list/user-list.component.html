@@ -1,0 +1,16 @@
+<button (click)="nagivateToUserDetails()">
+  Add
+</button>
+<div *ngFor="let user of getUserListService.userList" class="user-list-form">
+  <div>{{user.firstName}}</div>
+  <div>{{user.lastName}}</div>
+  <div>{{user.age}}</div>
+  <div>{{user.birthDate}}</div>
+  <div>{{user.salary}}</div>
+  <button (click)="nagivateToUserDetails(user.id)">
+    Edit
+  </button>
+  <!-- <button (click)="getUserListService.deleteUser(user.id)">
+    Delete
+  </button> -->
+</div>
