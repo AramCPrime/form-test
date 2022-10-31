@@ -41,13 +41,23 @@ export class GetUserListService {
       }
     ]
 
-    public addOrEdit(id?: number) {
-      if (id) {
-
+    public addOrEdit(newUser: any) {
+      if (newUser.id) {
+        this.userList = this.userList.map(user => (
+          user.id !== newUser.id ? user : newUser
+        ));
       } else {
-        
+        const sortedArray = this.userList.sort((a,b) => b.id - a.id)
+        const {id} = sortedArray[0]
+        this.userList = [...this.userList, {
+          ...newUser,
+          id: id + 1         
+        }]       
       }
     }
     public deleteUser(id: number) {
+      this.userList = this.userList.filter((user) => {
+        return user.id !== id
+      })
     }
 }

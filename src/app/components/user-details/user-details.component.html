@@ -1,7 +1,8 @@
-<form formGroupName="userForm">
+<form [formGroup]="userForm" (ngSubmit)="saveUser()">
   <input type="text" formControlName="firstName"/>
   <input type="text" formControlName="lastName"/>
   <input type="text" formControlName="age"/>
   <input type="text" formControlName="birthDate"/>
   <input type="text" formControlName="salary"/>
+  <button type="submit" [disabled]="userForm.invalid">Save</button>
 </form>
